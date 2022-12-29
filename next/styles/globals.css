@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #region - Typography -  */
+* {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+  @apply text-4xl tracking-normal leading-normal font-bold  sm:text-5xl md:text-6xl;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl font-bold tracking-tight;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+}
+
+p {
+  @apply text-base leading-relaxed;
+}
+
+.nav-item {
+  @apply hover:text-accent font-medium capitalize text-base inline-flex items-center transition underline-offset-8 hover:underline decoration-accent decoration-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-light;
+}
+
+.nav-item-mobile {
+  @apply mb-1
+                    p-2
+                    flex
+                    items-center
+                    rounded-md
+                    capitalize
+                    transition
+                    hover:bg-accent-light
+                    hover:text-accent;
+}
+
+/* #endregion - Typography -  */
+
+.btn {
+  @apply no-underline w-max inline-flex items-center border border-transparent font-medium shadow-sm transition
+        text-white bg-black hover:bg-accent focus:outline-none focus:ring-2 
+        focus:ring-offset-2 focus:ring-accent cursor-pointer;
+}
+
+.btn-xs {
+  @apply px-2.5 py-1.5 text-xs;
+}
+
+.btn-sm {
+  @apply px-3 py-2 text-sm;
+}
+
+.btn-md {
+  @apply px-4 py-2 text-sm;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-sm md:text-base;
+}
+.btn-xl {
+  @apply px-8 py-4 text-base md:px-6 md:py-3 md:text-lg;
+}
+
+/* #CONTENT SECTION - */
+.content-section div {
+  @apply mb-10;
+}
+
+.content-section h1 {
+  @apply mb-4;
+}
+.content-section h2 {
+  @apply mb-4;
+}
+.content-section h3 {
+  @apply mb-4;
+}
+
+.content-section p {
+  @apply mb-4;
+}
+
+.content-section a:not(.btn) {
+  @apply mb-4 underline text-accent hover:text-accent-hover !important;
+}
+.content-section ul:not(.unstyled) {
+  @apply mb-6 space-y-4;
+}
+.content-section ul:not(.unstyled) li {
+  @apply list-disc ml-4;
+}

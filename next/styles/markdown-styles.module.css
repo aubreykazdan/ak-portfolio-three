@@ -1,0 +1,22 @@
+.markdown {
+  @apply text-base lg:text-xl leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-6 list-disc;
+}
+
+.markdown h2 {
+  @apply text-2xl lg:text-3xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h3 {
+  @apply text-xl xl:text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown img {
+  @apply mx-auto;
+}
