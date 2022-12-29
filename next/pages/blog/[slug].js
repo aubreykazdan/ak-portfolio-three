@@ -1,13 +1,9 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { lazy } from "react";
-import { PreviewSuspense } from "next-sanity/preview";
-import {
-  DocumentsCount,
-  query,
-} from "../../components/sanity/previewDocumentsCount";
 import { getClient } from "@/lib/sanity.server";
 import { postSlugQuery } from "@/lib/queries";
+import Layout from "@/components/layouts/base/layout";
+import BlogContentCentered from "@/components/layouts/blog/blogContentCentered";
 
 export default function BlogSlug({ data = {}, preview }) {
   const router = useRouter();
@@ -17,12 +13,17 @@ export default function BlogSlug({ data = {}, preview }) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const { post } = data;
+  const { title } = post;
+
   return router.isFallback ? (
     <p>Loading...</p>
   ) : (
-    <>
-      <div>hello</div>
-    </>
+    <Layout page={`Blog | ${title}`}>
+      <main>
+        <BlogContentCentered data={post} />
+      </main>
+    </Layout>
   );
 }
 

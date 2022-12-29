@@ -23,6 +23,10 @@ p {
   @apply text-base leading-relaxed;
 }
 
+.category {
+  @apply rounded-full bg-gray-300 px-2 py-1 max-w-fit;
+}
+
 .nav-item {
   @apply hover:text-accent font-medium capitalize text-base inline-flex items-center transition underline-offset-8 hover:underline decoration-accent decoration-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-light;
 }

@@ -21,6 +21,7 @@ export default function BlogMainPreview({ data }) {
                   <img
                     className="absolute inset-0 h-full w-full object-cover"
                     src={urlForImage(mainImage.asset).url()}
+                    alt={mainImage.imageAlt}
                   />
                 </div>
                 <Link href={`blog/${slug.current}`}>
@@ -32,8 +33,7 @@ export default function BlogMainPreview({ data }) {
                           options
                         )}
                       </time>
-                      <div className="text-sm">
-                        Category:
+                      <div className="category">
                         {categories.map((item) => {
                           return (
                             <span className="text-sm ml-1" key={item._id}>
