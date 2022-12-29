@@ -4,3 +4,10 @@ export const allPostsQuery = `
   categories[]->
 }
 `;
+
+export const postSlugQuery = `
+*[_type == "post" && slug.current == $slug][0]{
+  ...,
+  categories[]->,
+}
+`;

@@ -9,8 +9,6 @@ export default function BlogMainPreview({ data }) {
     month: "long",
     year: "numeric",
   };
-
-  console.log(data);
   const { mainImage, title, slug, publishedAt, categories, description } = data;
   return (
     <>
