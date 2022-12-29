@@ -13,10 +13,10 @@ export default function Blog({ data }) {
   return (
     <Layout page="Blog">
       <main>
+        <SimpleBanner title="Blog" />
         <div className="py-8 sm:py-16 lg:py-20">
-          <SimpleBanner title="Blog" />
+          <BlogMainPreview data={blogPosts[0]} />
         </div>
-        <BlogMainPreview data={blogPosts[0]} />
         {/* <div className="py-8 sm:py-16 lg:py-20">
           <BlogThreeColumns />
         </div> */}

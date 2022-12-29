@@ -1,3 +1,6 @@
 export const allPostsQuery = `
-*[_type == "post"]
+*[_type == "post"]{
+  ...,
+  categories[]->
+}
 `;

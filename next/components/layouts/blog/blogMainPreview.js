@@ -1,9 +1,17 @@
+import BlogContent from "@/components/sanity/blogContent";
+import Link from "next/link";
 import Container from "../container";
 import { urlForImage } from "/lib/sanity";
 
 export default function BlogMainPreview({ data }) {
+  const options = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
+
   console.log(data);
-  const { mainImage } = data;
+  const { mainImage, title, slug, publishedAt, categories, description } = data;
   return (
     <>
       <div>
@@ -17,15 +25,30 @@ export default function BlogMainPreview({ data }) {
                     src={urlForImage(mainImage.asset).url()}
                   />
                 </div>
-                <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-accent transition ease-in-out border border-black group hover:border-transparent">
-                  <a href="#">
+                <Link href={`blog/${slug.current}`}>
+                  <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-accent hover:text-white transition ease-in-out border border-black hover:border-white group hover:border-transparent">
                     <div className="space-y-2">
-                      <time className="">Date</time>
-                      <p className="">Title</p>
-                      <p>Description</p>
+                      <time className=" text-sm">
+                        {new Date(publishedAt).toLocaleDateString(
+                          "en-us",
+                          options
+                        )}
+                      </time>
+                      <div className="text-sm">
+                        Category:
+                        {categories.map((item) => {
+                          return (
+                            <span className="text-sm ml-1" key={item._id}>
+                              {item.title}
+                            </span>
+                          );
+                        })}
+                      </div>
+                      <h3 className="text-xl">{title}</h3>
+                      <BlogContent content={description} />
                     </div>
-                  </a>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
