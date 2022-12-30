@@ -36,7 +36,7 @@ export default function BlogMainPreview({ data }) {
                       <div className="category">
                         {categories.map((item) => {
                           return (
-                            <span className="text-sm ml-1" key={item._id}>
+                            <span className="text-sm" key={item._id}>
                               {item.title}
                             </span>
                           );

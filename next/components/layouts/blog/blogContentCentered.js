@@ -1,4 +1,5 @@
 import BlogContent from "@/components/sanity/blogContent";
+import Container from "../container";
 import { urlForImage } from "/lib/sanity";
 
 export default function BlogContentCentered({ data }) {
@@ -10,8 +11,8 @@ export default function BlogContentCentered({ data }) {
 
   const { mainImage, title, publishedAt, categories, description, body } = data;
   return (
-    <div className="relative overflow-hidden py-16">
-      <div className="relative px-4 sm:px-6 lg:px-8">
+    <div className="relative overflow-hidden">
+      <Container>
         <div className="mx-auto max-w-prose text-lg">
           <figure>
             <img
@@ -29,7 +30,7 @@ export default function BlogContentCentered({ data }) {
             <div className="category">
               {categories.map((item) => {
                 return (
-                  <span className="ml-1 text-sm" key={item._id}>
+                  <span className="text-sm" key={item._id}>
                     {item.title}
                   </span>
                 );
@@ -53,7 +54,7 @@ export default function BlogContentCentered({ data }) {
         <div className="prose prose-lg mx-auto mt-6">
           <BlogContent content={body} />
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { getClient } from "@/lib/sanity.server";
 import { postSlugQuery } from "@/lib/queries";
 import Layout from "@/components/layouts/base/layout";
 import BlogContentCentered from "@/components/layouts/blog/blogContentCentered";
+import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColumnLargeImages";
 
 export default function BlogSlug({ data = {}, preview }) {
   const router = useRouter();
@@ -14,14 +15,21 @@ export default function BlogSlug({ data = {}, preview }) {
   }
 
   const { post } = data;
-  const { title } = post;
+  const { title, imagesArray } = post;
 
   return router.isFallback ? (
     <p>Loading...</p>
   ) : (
     <Layout page={`Blog | ${title}`}>
       <main>
-        <BlogContentCentered data={post} />
+        <div className="py-8 sm:py-16 lg:py-20">
+          <BlogContentCentered data={post} />
+        </div>
+        {imagesArray && (
+          <div>
+            <GridThreeColumnLargeImages data={imagesArray} />
+          </div>
+        )}
       </main>
     </Layout>
   );
