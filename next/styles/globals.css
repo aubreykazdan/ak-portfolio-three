@@ -48,7 +48,7 @@ p {
 .btn {
   @apply no-underline w-max inline-flex items-center border border-transparent font-medium shadow-sm transition
         text-white bg-black hover:bg-accent focus:outline-none focus:ring-2 
-        focus:ring-offset-2 focus:ring-accent cursor-pointer;
+        focus:ring-offset-2 focus:ring-accent cursor-pointer rounded-3xl;
 }
 
 .btn-xs {

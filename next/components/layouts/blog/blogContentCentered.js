@@ -43,7 +43,8 @@ export default function BlogContentCentered({ data }) {
             </span>
           </h1>
           <div className="flex justify-center">
-            <time>
+            <time dateTime={publishedAt}>
+              Published{" "}
               {new Date(publishedAt).toLocaleDateString("en-us", options)}
             </time>
           </div>
