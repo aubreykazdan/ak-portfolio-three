@@ -24,7 +24,7 @@ export default function BlogThreeColumns({ data }) {
             } = post;
             return (
               <Link href={`blog/${slug.current}`} key={title}>
-                <div className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:bg-gray-100 transition ease-in-out ">
+                <div className="flex flex-col overflow-hidden rounded-lg shadow-lg hover:bg-gray-100 transition ease-in-out min-h-full">
                   <div className="flex-shrink-0">
                     <img
                       className="h-48 w-full object-cover"

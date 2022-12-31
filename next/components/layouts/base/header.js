@@ -17,7 +17,7 @@ export default function Header({}) {
             <span className="sr-only">Aubrey Kazdan's Logo</span>
             <Link href="/">
               <img
-                className="w-auto h-14"
+                className="w-auto h-14 hover:shadow"
                 src="/assets/logo.svg"
                 alt="Aubrey Kazdan's Logo"
               />
@@ -67,7 +67,7 @@ export default function Header({}) {
                 <div className="flex items-center justify-between">
                   <Link href="/">
                     <img
-                      className="h-14 w-auto"
+                      className="h-14 w-auto hover:shadow"
                       src="/assets/logo.svg"
                       alt="Aubrey Kazdan's Logo"
                     />

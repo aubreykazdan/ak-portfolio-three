@@ -16,8 +16,11 @@ export default function BlogMainPreview({ data, showHeading }) {
         <Container>
           <div className="relative sm:py-16 lg:py-0 mb-40 lg:mb-0">
             {showHeading === true ? (
-              <div className="mb-10">
+              <div className="mb-8">
                 <h2>Featured Blog Post</h2>
+                <Link href="/blog" className="btn btn-lg mt-4">
+                  View All Posts
+                </Link>
               </div>
             ) : null}
             <div className="relative max-w-md sm:max-w-3xl">
