@@ -20,7 +20,7 @@ export default function SplitWithScreenshot() {
           <img
             className="absolute inset-0 h-full w-full object-cover"
             src="/images/nin-fan-day.jpg"
-            alt="Portrait of Aubrey standing in front of a band logo"
+            alt="Aubrey standing in front of a band logo"
           />
         </div>
       </main>
