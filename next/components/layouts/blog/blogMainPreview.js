@@ -31,7 +31,7 @@ export default function BlogMainPreview({ data, showHeading }) {
               />
             </div>
             <Link href={`blog/${slug.current}`}>
-              <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-gray-100 transition ease-in-out shadow-lg  group rounded-lg">
+              <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-gray-100 transition ease-in-out shadow-lg  group rounded-b-lg lg:rounded-lg">
                 <div className="space-y-2">
                   <time className=" text-sm">
                     {new Date(publishedAt).toLocaleDateString("en-us", options)}

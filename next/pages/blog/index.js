@@ -21,7 +21,7 @@ export default function Blog({ data }) {
         <div className="py-8 sm:py-16 lg:py-20">
           <BlogMainPreview data={featuredBlogPost[0]} />
         </div>
-        <div className="">
+        <div className="mt-24 lg:mt-0">
           <BlogThreeColumns data={allBlogPosts} />
         </div>
       </main>
