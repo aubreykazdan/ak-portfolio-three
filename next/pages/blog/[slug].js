@@ -8,7 +8,8 @@ import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColu
 
 export default function BlogSlug({ data = {}, preview }) {
   const router = useRouter();
-  const slug = data?.post?.slug;
+  // const slug = data?.post?.slug;
+  const slug = router.query.slug || [];
 
   if (!router.isFallBack && !slug) {
     return <ErrorPage statusCode={404} />;
