@@ -1,13 +1,21 @@
+import { getClient } from "../lib/sanity.server";
+import { featuredPostQuery } from "@/lib/queries";
+
 import BannerImageOverlap from "../components/layouts/banners/bannerImageOverlap";
 import Layout from "../components/layouts/base/layout";
 import SplitWithScreenshot from "../components/layouts/hero/splitWithScreenshot";
 import SplitGridRight from "../components/layouts/split/splitGridRight";
+import BlogMainPreview from "@/components/layouts/blog/blogMainPreview";
 
-export default function Home({}) {
+export default function Home({ data }) {
+  const { blogPost } = data;
   return (
     <Layout page="Home">
       <main>
         <SplitWithScreenshot />
+        <div className="py-8 sm:py-16 lg:py-20">
+          <BlogMainPreview showHeading data={blogPost} />
+        </div>
         <div className="py-16 lg:py-20">
           <SplitGridRight />
         </div>
@@ -17,4 +25,16 @@ export default function Home({}) {
       </main>
     </Layout>
   );
+}
+
+export async function getServerSideProps({ params, preview = false }) {
+  const blogPost = await getClient(preview).fetch(featuredPostQuery);
+  return {
+    props: {
+      preview,
+      data: {
+        blogPost,
+      },
+    },
+  };
 }

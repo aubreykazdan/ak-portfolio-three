@@ -3,7 +3,7 @@ import Link from "next/link";
 import Container from "../container";
 import { urlForImage } from "/lib/sanity";
 
-export default function BlogMainPreview({ data }) {
+export default function BlogMainPreview({ data, showHeading }) {
   const options = {
     day: "numeric",
     month: "long",
@@ -14,40 +14,43 @@ export default function BlogMainPreview({ data }) {
     <>
       <div>
         <Container>
-          <div className="pb-16 lg:pb-20 border-b border-black">
-            <div className="relative sm:py-16 lg:py-0 mb-40 lg:mb-0">
-              <div className="relative max-w-md sm:max-w-3xl">
-                <div className="relative overflow-hidden py-64">
-                  <img
-                    className="absolute inset-0 h-full w-full object-cover"
-                    src={urlForImage(mainImage.asset).url()}
-                    alt={mainImage.imageAlt}
-                  />
-                </div>
-                <Link href={`blog/${slug.current}`}>
-                  <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-gray-100 transition ease-in-out border border-black  group">
-                    <div className="space-y-2">
-                      <time className=" text-sm">
-                        {new Date(publishedAt).toLocaleDateString(
-                          "en-us",
-                          options
-                        )}
-                      </time>
-                      <div className="category">
-                        {categories.map((item) => {
-                          return (
-                            <span className="text-sm" key={item._id}>
-                              {item.title}
-                            </span>
-                          );
-                        })}
-                      </div>
-                      <h3 className="text-xl">{title}</h3>
-                      <BlogContent content={description} />
-                    </div>
-                  </div>
-                </Link>
+          <div className="relative sm:py-16 lg:py-0 mb-40 lg:mb-0">
+            {showHeading === true ? (
+              <div className="mb-10">
+                <h2>Featured Blog Post</h2>
               </div>
+            ) : null}
+            <div className="relative max-w-md sm:max-w-3xl">
+              <div className="relative overflow-hidden py-64 rounded-lg">
+                <img
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={urlForImage(mainImage.asset).url()}
+                  alt={mainImage.imageAlt}
+                />
+              </div>
+              <Link href={`blog/${slug.current}`}>
+                <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-gray-100 transition ease-in-out shadow-lg  group rounded-lg">
+                  <div className="space-y-2">
+                    <time className=" text-sm">
+                      {new Date(publishedAt).toLocaleDateString(
+                        "en-us",
+                        options
+                      )}
+                    </time>
+                    <div className="category">
+                      {categories.map((item) => {
+                        return (
+                          <span className="text-sm" key={item._id}>
+                            {item.title}
+                          </span>
+                        );
+                      })}
+                    </div>
+                    <h3 className="text-xl">{title}</h3>
+                    <BlogContent content={description} />
+                  </div>
+                </div>
+              </Link>
             </div>
           </div>
         </Container>

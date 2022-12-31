@@ -12,6 +12,7 @@ export default function Blog({ data }) {
   const { blogPosts } = data;
 
   const featuredBlogPost = blogPosts.filter((item) => item.featured === true);
+  const allBlogPosts = blogPosts.filter((item) => item.featured === false);
 
   return (
     <Layout page="Blog">
@@ -20,9 +21,9 @@ export default function Blog({ data }) {
         <div className="py-8 sm:py-16 lg:py-20">
           <BlogMainPreview data={featuredBlogPost[0]} />
         </div>
-        {/* <div className="py-8 sm:py-16 lg:py-20">
-          <BlogThreeColumns />
-        </div> */}
+        <div className="">
+          <BlogThreeColumns data={allBlogPosts} />
+        </div>
       </main>
     </Layout>
   );
