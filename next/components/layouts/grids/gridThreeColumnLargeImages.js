@@ -17,7 +17,7 @@ export default function GridThreeColumnLargeImages({ data }) {
                   <img
                     className="rounded-lg object-cover shadow-lg"
                     src={urlForImage(item.asset).url()}
-                    alt=""
+                    alt={item.imageAlt}
                   />
                 </div>
               </div>

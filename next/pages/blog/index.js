@@ -10,12 +10,15 @@ import BlogMainPreview from "@/components/layouts/blog/blogMainPreview";
 export default function Blog({ data }) {
   const router = useRouter();
   const { blogPosts } = data;
+
+  const featuredBlogPost = blogPosts.filter((item) => item.featured === true);
+
   return (
     <Layout page="Blog">
       <main>
         <SimpleBanner title="Blog" />
         <div className="py-8 sm:py-16 lg:py-20">
-          <BlogMainPreview data={blogPosts[0]} />
+          <BlogMainPreview data={featuredBlogPost[0]} />
         </div>
         {/* <div className="py-8 sm:py-16 lg:py-20">
           <BlogThreeColumns />

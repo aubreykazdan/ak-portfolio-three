@@ -9,7 +9,16 @@ export default function BlogContentCentered({ data }) {
     year: "numeric",
   };
 
-  const { mainImage, title, publishedAt, categories, description, body } = data;
+  const {
+    mainImage,
+    mainImageTwo,
+    title,
+    publishedAt,
+    categories,
+    description,
+    body,
+    bodyTwo,
+  } = data;
   return (
     <div className="relative overflow-hidden">
       <Container>
@@ -38,7 +47,7 @@ export default function BlogContentCentered({ data }) {
             </div>
           </div>
           <h1>
-            <span className="block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl mt-4">
+            <span className="block text-center text-3xl font-bold leading-8 tracking-tight  sm:text-4xl mt-4">
               {title}
             </span>
           </h1>
@@ -48,12 +57,27 @@ export default function BlogContentCentered({ data }) {
               {new Date(publishedAt).toLocaleDateString("en-us", options)}
             </time>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 border-b border-black pb-6">
             <BlogContent content={description} />
           </div>
         </div>
         <div className="prose prose-lg mx-auto mt-6">
           <BlogContent content={body} />
+          {mainImageTwo && (
+            <figure>
+              <img
+                className="w-full rounded-lg"
+                src={urlForImage(mainImageTwo.asset).url()}
+                alt={mainImageTwo.imageAlt}
+                width={1310}
+                height={873}
+              />
+              <figcaption className="mt-2 text-gray-500 italic">
+                {mainImageTwo.caption}
+              </figcaption>
+            </figure>
+          )}
+          {bodyTwo && <BlogContent content={bodyTwo} />}
         </div>
       </Container>
     </div>
