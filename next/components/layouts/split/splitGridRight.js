@@ -11,7 +11,7 @@ export default function SplitGridRight() {
             Listed here are some of the programming languages I am fluent in.
             Next on the list: Remix.
           </p>
-          <div className="mt-8 sm:flex">
+          <div className="mt-8 sm:flex space-x-4">
             <a
               href="https://github.com/aubreykazdan"
               target="_blank"
@@ -20,11 +20,9 @@ export default function SplitGridRight() {
             >
               GitHub
             </a>
-            <div className="mt-3 sm:mt-0 sm:ml-3">
-              <Link href="/projects" className="btn btn-lg">
-                Projects
-              </Link>
-            </div>
+            <Link href="/projects" className="btn btn-lg mt-3 sm:mt-0 sm:ml-3">
+              Projects
+            </Link>
           </div>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-2">

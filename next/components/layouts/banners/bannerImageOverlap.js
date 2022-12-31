@@ -31,10 +31,7 @@ export default function BannerImageOverlap({}) {
                   </span>
                 </p>
               </div>
-              <div className="sm:flex space-x-4 mt-6">
-                <Link href="/about" className="btn btn-lg">
-                  About
-                </Link>
+              <div className="sm:flex space-x-4 mt-8">
                 <a
                   href="https://www.instagram.com/aubreykazdan/"
                   target="_blank"
@@ -43,6 +40,9 @@ export default function BannerImageOverlap({}) {
                 >
                   Instagram
                 </a>
+                <Link href="/about" className="btn btn-lg">
+                  About
+                </Link>
               </div>
             </blockquote>
           </div>
