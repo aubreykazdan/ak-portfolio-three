@@ -8,6 +8,7 @@ const config = {
   useCdn:
     typeof document !== "undefined" && process.env.NODE_ENV === "production",
   apiVersion: "2022-03-13",
+  token: process.env.SANITY_API_TOKEN,
 };
 
 export const imageBuilder = createImageUrlBuilder(config);

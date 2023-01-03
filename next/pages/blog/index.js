@@ -1,4 +1,4 @@
-import { getClient } from "../../lib/sanity.server";
+import { getClient } from "../../lib/sanity";
 import { useRouter } from "next/router";
 
 import SimpleBanner from "../../components/layouts/banners/simpleBanner";

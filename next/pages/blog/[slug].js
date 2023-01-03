@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { getClient } from "@/lib/sanity.server";
+import { getClient } from "@/lib/sanity";
 import { postSlugQuery } from "@/lib/queries";
 import { usePreviewSubscription } from "../../lib/sanity";
 import Layout from "@/components/layouts/base/layout";

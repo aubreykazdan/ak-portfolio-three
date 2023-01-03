@@ -1,4 +1,4 @@
-import { getClient } from "../lib/sanity.server";
+import { getClient } from "../lib/sanity";
 import { featuredPostQuery } from "@/lib/queries";
 
 import BannerImageOverlap from "../components/layouts/banners/bannerImageOverlap";
