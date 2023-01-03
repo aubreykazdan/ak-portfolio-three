@@ -22,7 +22,9 @@ const postFields = `
   imagesArray,
   mainImage,
   mainImageTwo,
+  publishedAt,
   'slug': slug.current,
+  title,
 `;
 
 const getClient = (preview) => (preview ? previewClient : client);
@@ -44,7 +46,7 @@ export async function getAllPostsWithSlug() {
 
 export async function getAllPostsForHome(preview) {
   const results = await getClient(preview)
-    .fetch(`*[_type == "post"] | order(publishedAt desc){
+    .fetch(`*[_type == "post" && featured == true]{
       ${postFields}
     }`);
   return getUniquePosts(results);

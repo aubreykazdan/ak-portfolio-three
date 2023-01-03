@@ -1,22 +1,14 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import { getClient } from "@/lib/sanity";
-import { postSlugQuery } from "@/lib/queries";
-import { usePreviewSubscription } from "../../lib/sanity";
+import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import Layout from "@/components/layouts/base/layout";
 import BlogContentCentered from "@/components/layouts/blog/blogContentCentered";
 import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColumnLargeImages";
 
 export default function BlogSlug({ data = {}, preview }) {
   const router = useRouter();
-  const slug = data?.post?.slug;
-  const { postSlug } = usePreviewSubscription(postSlugQuery, {
-    params: { slug },
-    initialData: data,
-    enables: preview && slug,
-  });
 
-  if (!router.isFallBack && !slug) {
+  if (!router.isFallBack && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
 
@@ -41,16 +33,26 @@ export default function BlogSlug({ data = {}, preview }) {
   );
 }
 
-export async function getServerSideProps({ params, preview = false }) {
-  const post = await getClient(preview).fetch(postSlugQuery, {
-    slug: params.slug,
-  });
+export async function getStaticProps({ params, preview = false }) {
+  const data = await getPostAndMorePosts(params.slug, preview);
   return {
     props: {
       preview,
-      data: {
-        post,
-      },
+      post: data?.post || null,
+      morePosts: data?.morePosts || null,
     },
+    revalidate: 1,
+  };
+}
+export async function getStaticPaths() {
+  const allPosts = await getAllPostsWithSlug();
+  return {
+    paths:
+      allPosts?.map((post) => ({
+        params: {
+          slug: post.slug,
+        },
+      })) || [],
+    fallback: true,
   };
 }
