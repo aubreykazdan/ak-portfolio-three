@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { getClient } from "@/lib/sanity.server";
 import { postSlugQuery } from "@/lib/queries";
+import { usePreviewSubscription } from "../../lib/sanity";
 import Layout from "@/components/layouts/base/layout";
 import BlogContentCentered from "@/components/layouts/blog/blogContentCentered";
 import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColumnLargeImages";
@@ -9,6 +10,11 @@ import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColu
 export default function BlogSlug({ data = {}, preview }) {
   const router = useRouter();
   const slug = data?.post?.slug;
+  const { postSlug } = usePreviewSubscription(postSlugQuery, {
+    params: { slug },
+    initialData: data,
+    enables: preview && slug,
+  });
 
   if (!router.isFallBack && !slug) {
     return <ErrorPage statusCode={404} />;
