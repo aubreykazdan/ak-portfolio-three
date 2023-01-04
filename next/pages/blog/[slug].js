@@ -8,9 +8,9 @@ import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColu
 export default function BlogSlug({ post, morePosts, preview }) {
   const router = useRouter();
 
-  if (!router.isFallBack && !post) {
-    return <ErrorPage statusCode={404} />;
-  }
+  // if (!router.isFallBack && !post) {
+  //   return <ErrorPage statusCode={404} />;
+  // }
 
   const blogPost = post[0];
   const { title, imagesArray } = blogPost;
