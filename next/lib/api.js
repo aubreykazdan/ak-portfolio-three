@@ -64,7 +64,7 @@ export async function getPost(slug, preview) {
   const curClient = getClient(preview);
   const [post] = await Promise.all([
     curClient.fetch(
-      `*[_type == "post" && slug.current == $slug] {
+      `*[_type == "post" && slug.current == $slug] | order(publishedAt desc) {
           ${postFields}
         }
       `,

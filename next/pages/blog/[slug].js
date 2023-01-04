@@ -8,24 +8,26 @@ import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColu
 export default function BlogSlug({ post, morePosts, preview }) {
   const router = useRouter();
 
-  if (!router.isFallBack && !post?.slug) {
+  if (!router.isFallBack && !post) {
     return <ErrorPage statusCode={404} />;
   }
-  // const { title, imagesArray } = post;
+
+  const blogPost = post[0];
+  const { title, imagesArray } = blogPost;
 
   return router.isFallback ? (
     <p>Loading...</p>
   ) : (
-    <Layout page={`Blog `}>
+    <Layout page={`Blog | ${title}`}>
       <main>
-        {/* <div className="py-8 sm:py-16 lg:py-20">
-          <BlogContentCentered data={post} />
+        <div className="py-8 sm:py-16 lg:py-20">
+          <BlogContentCentered data={blogPost} />
         </div>
         {imagesArray && (
           <div>
             <GridThreeColumnLargeImages data={imagesArray} />
           </div>
-        )} */}
+        )}
       </main>
     </Layout>
   );
