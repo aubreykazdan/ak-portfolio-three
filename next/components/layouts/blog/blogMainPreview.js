@@ -30,7 +30,7 @@ export default function BlogMainPreview({ data, showHeading }) {
                 alt={mainImage.imageAlt}
               />
             </div>
-            <Link href={`blog/${slug.current}`}>
+            <Link href={`blog/${slug}`}>
               <div className="p-6 w-full lg:w-2/3 absolute -bottom-20 right-0 lg:bottom-[20%] lg:-right-[45%] bg-white hover:bg-gray-100 transition ease-in-out shadow-lg  group rounded-b-lg lg:rounded-lg">
                 <div className="space-y-2">
                   <time className=" text-sm">

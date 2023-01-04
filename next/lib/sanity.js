@@ -2,7 +2,6 @@ import createImageUrlBuilder from "@sanity/image-url";
 import { createClient, createPreviewSubscriptionHook } from "next-sanity";
 
 const config = {
-  // Find your project ID and dataset in `sanity.json` in your studio project
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   useCdn:

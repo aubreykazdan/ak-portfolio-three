@@ -52,24 +52,24 @@ export async function getAllPostsForHome(preview) {
   return getUniquePosts(results);
 }
 
-export async function getPostAndMorePosts(slug, preview) {
+export async function getAllPosts(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "post"] | order(publishedAt desc){
+      ${postFields}
+    }`);
+  return getUniquePosts(results);
+}
+
+export async function getPost(slug, preview) {
   const curClient = getClient(preview);
-  const [post, morePosts] = await Promise.all([
-    curClient
-      .fetch(
-        `*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
-        ${postFields}
-        }
-      }`,
-        { slug }
-      )
-      .then((res) => res?.[0]),
+  const [post] = await Promise.all([
     curClient.fetch(
-      `*[_type == "post" && slug.current != $slug] | order(publishedAt desc, _updatedAt desc){
-        ${postFields}
-      }[0...2]`,
+      `*[_type == "post" && slug.current == $slug] {
+          ${postFields}
+        }
+      `,
       { slug }
     ),
   ]);
-  return { post, morePosts: getUniquePosts(morePosts) };
+  return { post };
 }

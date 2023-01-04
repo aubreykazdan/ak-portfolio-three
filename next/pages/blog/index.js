@@ -1,18 +1,16 @@
-import { getClient } from "../../lib/sanity";
+import { getAllPosts } from "../../lib/api";
 import { useRouter } from "next/router";
 
 import SimpleBanner from "../../components/layouts/banners/simpleBanner";
 import Layout from "../../components/layouts/base/layout";
-import { allPostsQuery } from "@/lib/queries";
 import BlogThreeColumns from "@/components/layouts/blog/blogThreeColumns";
 import BlogMainPreview from "@/components/layouts/blog/blogMainPreview";
 
-export default function Blog({ data }) {
+export default function Blog({ allPosts, preview }) {
   const router = useRouter();
-  const { blogPosts } = data;
 
-  const featuredBlogPost = blogPosts.filter((item) => item.featured === true);
-  const allBlogPosts = blogPosts.filter((item) => item.featured === false);
+  const featuredBlogPost = allPosts.filter((item) => item.featured === true);
+  const allBlogPosts = allPosts.filter((item) => item.featured === false);
 
   return (
     <Layout page="Blog">
@@ -29,14 +27,10 @@ export default function Blog({ data }) {
   );
 }
 
-export async function getServerSideProps({ params, preview = false }) {
-  const blogPosts = await getClient(preview).fetch(allPostsQuery);
+export async function getStaticProps({ preview = false }) {
+  const allPosts = await getAllPosts(preview);
   return {
-    props: {
-      preview,
-      data: {
-        blogPosts,
-      },
-    },
+    props: { allPosts, preview },
+    revalidate: 1,
   };
 }
