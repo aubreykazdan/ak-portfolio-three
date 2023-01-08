@@ -5,12 +5,12 @@ import Layout from "@/components/layouts/base/layout";
 import BlogContentCentered from "@/components/layouts/blog/blogContentCentered";
 import GridThreeColumnLargeImages from "@/components/layouts/grids/gridThreeColumnLargeImages";
 
-export default function BlogSlug({ post, morePosts, preview }) {
+export default function BlogSlug({ post, preview }) {
   const router = useRouter();
 
-  // if (!router.isFallBack && !post) {
-  //   return <ErrorPage statusCode={404} />;
-  // }
+  if (!router.isFallBack && !post) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   const blogPost = post[0];
   const { title, imagesArray } = blogPost;
