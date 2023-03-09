@@ -11,6 +11,7 @@ export default function Footer({}) {
               target="_blank"
               rel="noreferrer"
               className="logo"
+              aria-label="Link to Instagram"
             >
               <img
                 className="w-auto h-6"
@@ -23,6 +24,7 @@ export default function Footer({}) {
               target="_blank"
               rel="noreferrer"
               className="logo"
+              aria-label="Link to GitHub"
             >
               <img
                 className="w-auto h-6"
